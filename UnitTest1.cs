@@ -46,7 +46,7 @@ namespace UnitTestProject1
             var driver = new ChromeDriver();
             driver.Navigate().GoToUrl("http://www.ultimateqa.com/automation/");
             var myElement = driver.FindElement(By.XPath("//a[normalize-space()='Big page with many elements']"));
-
+            myElement.GetCssValue("");
 
 
         }
