@@ -50,5 +50,37 @@ namespace UnitTestProject1
 
 
         }
+
+        [TestMethod]
+        [TestCategory("Element Interrogation")]
+        public void ElementInterrogation2()
+        {
+            var driver = new ChromeDriver();
+            driver.Url = "http://www.ultimateqa.com/simple-html-elements-for-automation/";
+            driver.Manage().Window.Maximize();
+            //Find button by ID
+            var button = driver.FindElement(By.Id("idExample"));
+            //GetAttribut("type") and assert that it equals the right value
+            Assert.AreEqual("", button.GetAttribute("type"));
+            //GetCssValue("letter-spacing") and assert that it equals the correct value
+            Assert.AreEqual("normal", button.GetCssValue("letter-spacing"));
+            //Assert that it's displayed
+            Assert.IsTrue(button.Displayed);
+            //Assert that it's Enabled
+            Assert.IsTrue(button.Enabled);
+            //Assert that it's NOT selected
+            Assert.IsFalse(button.Selected);
+            //Assert that Text is correct
+            Assert.AreEqual(button.Text, "Click this button using \"ID\"");
+            //Assert that the TagName is correct
+            Assert.AreEqual("a", button.TagName);
+            //Assert that the size height is 21
+            Assert.AreEqual(63, button.Size.Height);
+            //Assert that the location is x=190, y = 330
+            Assert.AreEqual(661, button.Location.X);
+            Assert.AreEqual(486, button.Location.Y);
+
+            driver.Quit();
+        }
     }
 }
